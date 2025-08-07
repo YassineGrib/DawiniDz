@@ -75,6 +75,7 @@ class SampleDataService {
       await dbHelper.insert('users', user.toMap());
 
       debugPrint('Sample user created successfully');
+      debugPrint('Login credentials: ahmed.alarabi@example.com / password123');
     } catch (e) {
       debugPrint('Error creating sample user: $e');
     }

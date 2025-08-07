@@ -5,6 +5,7 @@ import '../../constants/app_constants.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../models/user.dart';
 import '../../services/user_service.dart';
+import '../../services/auth_service.dart';
 import '../../utils/ui_helpers.dart';
 import 'edit_profile_screen.dart';
 import 'settings_screen.dart';
@@ -19,6 +20,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final UserService _userService = UserService();
+  final AuthService _authService = AuthService();
   User? _currentUser;
   bool _isLoading = true;
   Map<String, int> _userStats = {};
@@ -32,20 +34,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _loadUserProfile() async {
     try {
-      // TODO: Get current user ID from auth service
-      const userId = 'current_user_id';
-      final user = await _userService.getUserByUuid(userId);
-      
+      // Initialize auth service and get current user
+      await _authService.initialize();
+      final user = _authService.currentUser;
+
       setState(() {
         _currentUser = user;
         _isLoading = false;
       });
+
+      if (user == null) {
+        // No user logged in, redirect to login
+        if (mounted) {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+            (route) => false,
+          );
+        }
+      }
     } catch (e) {
       setState(() {
         _isLoading = false;
       });
       if (mounted) {
-        UIHelpers.showErrorSnackBar(context, 'خطأ في تحميل الملف الشخصي');
+        UIHelpers.showErrorSnackBar(
+          context,
+          'خطأ في تحميل الملف الشخصي: ${e.toString()}',
+        );
       }
     }
   }
@@ -68,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _changeProfileImage() async {
     final ImagePicker picker = ImagePicker();
-    
+
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -138,26 +153,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
 
     if (confirmed == true && mounted) {
-      // TODO: Clear auth data
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
-        (route) => false,
-      );
+      try {
+        // Show loading
+        UIHelpers.showLoadingDialog(context, message: 'جاري تسجيل الخروج...');
+
+        // Clear auth data
+        await _authService.logout();
+
+        // Hide loading
+        if (mounted) {
+          UIHelpers.hideLoadingDialog(context);
+
+          // Navigate to login screen
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+            (route) => false,
+          );
+
+          // Show success message
+          UIHelpers.showSuccessSnackBar(context, 'تم تسجيل الخروج بنجاح');
+        }
+      } catch (e) {
+        if (mounted) {
+          UIHelpers.hideLoadingDialog(context);
+          UIHelpers.showErrorSnackBar(
+            context,
+            'خطأ في تسجيل الخروج: ${e.toString()}',
+          );
+        }
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'الملف الشخصي',
-        showBackButton: false,
-      ),
+      appBar: const CustomAppBar(title: 'الملف الشخصي', showBackButton: false),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _currentUser == null
-              ? _buildErrorState()
-              : _buildProfileContent(),
+          ? _buildErrorState()
+          : _buildProfileContent(),
     );
   }
 
@@ -180,14 +216,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           // Profile Header
           _buildProfileHeader(),
-          
+
           const SizedBox(height: AppConstants.paddingLarge),
-          
+
           // User Stats
           _buildUserStats(),
-          
+
           const SizedBox(height: AppConstants.paddingLarge),
-          
+
           // Profile Options
           _buildProfileOptions(),
         ],
@@ -206,13 +242,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: AppConstants.primaryColor.withValues(alpha: 0.1),
+                  backgroundColor: AppConstants.primaryColor.withValues(
+                    alpha: 0.1,
+                  ),
                   backgroundImage: _currentUser!.profileImage != null
                       ? FileImage(File(_currentUser!.profileImage!))
                       : null,
                   child: _currentUser!.profileImage == null
                       ? Text(
-                          _currentUser!.fullName.split(' ').first.substring(0, 1),
+                          _currentUser!.fullName
+                              .split(' ')
+                              .first
+                              .substring(0, 1),
                           style: const TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -242,9 +283,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: AppConstants.paddingMedium),
-            
+
             // User Name
             Text(
               _currentUser!.fullName,
@@ -254,9 +295,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppConstants.textPrimaryColor,
               ),
             ),
-            
+
             const SizedBox(height: AppConstants.paddingSmall),
-            
+
             // User Email
             Text(
               _currentUser!.email,
@@ -265,7 +306,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppConstants.textSecondaryColor,
               ),
             ),
-            
+
             if (_currentUser!.phone != null) ...[
               const SizedBox(height: AppConstants.paddingSmall / 2),
               Text(
@@ -276,19 +317,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ],
-            
+
             const SizedBox(height: AppConstants.paddingMedium),
-            
+
             // Edit Profile Button
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => EditProfileScreen(user: _currentUser!),
-                    ),
-                  ).then((_) => _loadUserProfile());
+                  Navigator.of(context)
+                      .push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              EditProfileScreen(user: _currentUser!),
+                        ),
+                      )
+                      .then((_) => _loadUserProfile());
                 },
                 icon: const Icon(Icons.edit),
                 label: const Text('تعديل الملف الشخصي'),
@@ -315,9 +359,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: AppConstants.textPrimaryColor,
               ),
             ),
-            
+
             const SizedBox(height: AppConstants.paddingMedium),
-            
+
             Row(
               children: [
                 Expanded(
@@ -338,9 +382,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: AppConstants.paddingMedium),
-            
+
             Row(
               children: [
                 Expanded(
@@ -375,7 +419,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }) {
     return Container(
       padding: const EdgeInsets.all(AppConstants.paddingMedium),
-      margin: const EdgeInsets.symmetric(horizontal: AppConstants.paddingSmall / 2),
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppConstants.paddingSmall / 2,
+      ),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(AppConstants.borderRadiusMedium),
@@ -414,9 +460,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             subtitle: 'إعدادات التطبيق والخصوصية',
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SettingsScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               );
             },
           ),
@@ -459,10 +503,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     Color? textColor,
   }) {
     return ListTile(
-      leading: Icon(
-        icon,
-        color: textColor ?? AppConstants.textPrimaryColor,
-      ),
+      leading: Icon(icon, color: textColor ?? AppConstants.textPrimaryColor),
       title: Text(
         title,
         style: TextStyle(

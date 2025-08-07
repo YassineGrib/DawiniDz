@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../constants/app_constants.dart';
 import '../../widgets/custom_app_bar.dart';
-import '../../services/user_service.dart';
+import '../../services/auth_service.dart';
+import '../../utils/ui_helpers.dart';
 import '../home_screen.dart';
 import 'register_screen.dart';
 
@@ -16,10 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
   bool _isLoading = false;
   bool _obscurePassword = true;
-
-  final UserService _userService = UserService();
 
   @override
   void dispose() {
@@ -36,34 +36,27 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      // For demo purposes, we'll create a user if it doesn't exist
-      final user = await _userService.getUserByEmail(_emailController.text);
-      
-      if (user != null) {
-        // User exists, navigate to home
-        if (mounted) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
-        }
-      } else {
-        // User doesn't exist, show error
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('المستخدم غير موجود. يرجى إنشاء حساب جديد.'),
-              backgroundColor: AppConstants.errorColor,
-            ),
-          );
-        }
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      final success = await _authService.login(email, password);
+
+      if (success && mounted) {
+        // Login successful, navigate to home
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+
+        UIHelpers.showSuccessSnackBar(context, 'تم تسجيل الدخول بنجاح');
+      } else if (mounted) {
+        // Login failed
+        UIHelpers.showErrorSnackBar(context, 'بيانات تسجيل الدخول غير صحيحة');
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('خطأ في تسجيل الدخول: ${e.toString()}'),
-            backgroundColor: AppConstants.errorColor,
-          ),
+        UIHelpers.showErrorSnackBar(
+          context,
+          'خطأ في تسجيل الدخول: ${e.toString()}',
         );
       }
     } finally {
@@ -78,10 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'تسجيل الدخول',
-        showBackButton: false,
-      ),
+      appBar: const CustomAppBar(title: 'تسجيل الدخول', showBackButton: false),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppConstants.paddingLarge),
         child: Form(
@@ -90,24 +80,56 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: AppConstants.paddingXLarge),
-              
+
               // Logo
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: AppConstants.primaryColor.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.borderRadiusLarge),
-                ),
-                child: const Icon(
-                  Icons.local_hospital,
-                  size: 50,
-                  color: AppConstants.primaryColor,
+              Center(
+                child: Container(
+                  height: 120,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      AppConstants.borderRadiusLarge,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppConstants.primaryColor.withValues(alpha: 0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(
+                      AppConstants.borderRadiusLarge,
+                    ),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Fallback to icon if image fails to load
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: AppConstants.primaryColor.withValues(
+                              alpha: 0.1,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              AppConstants.borderRadiusLarge,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.local_hospital,
+                            size: 50,
+                            color: AppConstants.primaryColor,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
-              
+
               const SizedBox(height: AppConstants.paddingLarge),
-              
+
               // Welcome Text
               const Text(
                 'مرحباً بك في دويني دي زد',
@@ -118,9 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              
+
               const SizedBox(height: AppConstants.paddingSmall),
-              
+
               const Text(
                 'سجل دخولك للوصول إلى حسابك',
                 style: TextStyle(
@@ -129,9 +151,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              
+
               const SizedBox(height: AppConstants.paddingXLarge),
-              
+
               // Email Field
               TextFormField(
                 controller: _emailController,
@@ -146,15 +168,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (value == null || value.isEmpty) {
                     return 'يرجى إدخال البريد الإلكتروني';
                   }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
                     return 'البريد الإلكتروني غير صحيح';
                   }
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: AppConstants.paddingMedium),
-              
+
               // Password Field
               TextFormField(
                 controller: _passwordController,
@@ -166,7 +190,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixIcon: const Icon(Icons.lock),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                      _obscurePassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
                     ),
                     onPressed: () {
                       setState(() {
@@ -185,9 +211,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: AppConstants.paddingLarge),
-              
+
               // Login Button
               ElevatedButton(
                 onPressed: _isLoading ? null : _login,
@@ -197,14 +223,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 20,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
                         ),
                       )
                     : const Text('تسجيل الدخول'),
               ),
-              
+
               const SizedBox(height: AppConstants.paddingMedium),
-              
+
               // Forgot Password
               TextButton(
                 onPressed: () {
@@ -217,15 +245,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text('نسيت كلمة المرور؟'),
               ),
-              
+
               const SizedBox(height: AppConstants.paddingLarge),
-              
+
               // Divider
               const Row(
                 children: [
                   Expanded(child: Divider()),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: AppConstants.paddingMedium),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppConstants.paddingMedium,
+                    ),
                     child: Text(
                       'أو',
                       style: TextStyle(color: AppConstants.textSecondaryColor),
@@ -234,14 +264,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(child: Divider()),
                 ],
               ),
-              
+
               const SizedBox(height: AppConstants.paddingLarge),
-              
+
               // Register Button
               OutlinedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterScreen(),
+                    ),
                   );
                 },
                 child: const Text('إنشاء حساب جديد'),

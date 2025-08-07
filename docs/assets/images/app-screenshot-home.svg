@@ -1,0 +1,64 @@
+<svg width="250" height="460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F1F8E9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="250" height="460" fill="url(#bgGradient)"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="250" height="80" fill="#2E7D32"/>
+  <text x="125" y="35" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">دويني دي زي</text>
+  <text x="125" y="55" text-anchor="middle" font-family="Arial" font-size="12" fill="white">أهلاً بك، أحمد</text>
+  
+  <!-- Quick Actions -->
+  <rect x="20" y="100" width="210" height="80" rx="12" fill="white" opacity="0.9"/>
+  <text x="30" y="125" font-family="Arial" font-size="14" font-weight="bold" fill="#2E7D32">الإجراءات السريعة</text>
+  
+  <!-- Action Buttons -->
+  <rect x="30" y="140" width="45" height="30" rx="8" fill="#4CAF50"/>
+  <text x="52" y="158" text-anchor="middle" font-family="Arial" font-size="8" fill="white">موعد</text>
+  
+  <rect x="85" y="140" width="45" height="30" rx="8" fill="#FF9800"/>
+  <text x="107" y="158" text-anchor="middle" font-family="Arial" font-size="8" fill="white">قياس</text>
+  
+  <rect x="140" y="140" width="45" height="30" rx="8" fill="#9C27B0"/>
+  <text x="162" y="158" text-anchor="middle" font-family="Arial" font-size="8" fill="white">دواء</text>
+  
+  <rect x="195" y="140" width="25" height="30" rx="8" fill="#2196F3"/>
+  <text x="207" y="158" text-anchor="middle" font-family="Arial" font-size="8" fill="white">+</text>
+  
+  <!-- Recent Appointments -->
+  <rect x="20" y="200" width="210" height="100" rx="12" fill="white" opacity="0.9"/>
+  <text x="30" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#2E7D32">المواعيد القادمة</text>
+  
+  <!-- Appointment Item -->
+  <circle cx="45" cy="250" r="15" fill="#4CAF50" opacity="0.2"/>
+  <text x="45" y="255" text-anchor="middle" font-family="Arial" font-size="12" fill="#4CAF50">د</text>
+  <text x="70" y="248" font-family="Arial" font-size="12" font-weight="bold" fill="#333">د. محمد أحمد</text>
+  <text x="70" y="262" font-family="Arial" font-size="10" fill="#666">طب القلب - غداً 10:00</text>
+  
+  <!-- Health Stats -->
+  <rect x="20" y="320" width="210" height="120" rx="12" fill="white" opacity="0.9"/>
+  <text x="30" y="345" font-family="Arial" font-size="14" font-weight="bold" fill="#2E7D32">إحصائياتك الصحية</text>
+  
+  <!-- Stats Grid -->
+  <rect x="30" y="360" width="90" height="30" rx="6" fill="#E3F2FD"/>
+  <text x="35" y="375" font-family="Arial" font-size="10" fill="#1976D2">ضغط الدم</text>
+  <text x="35" y="385" font-family="Arial" font-size="8" fill="#666">120/80</text>
+  
+  <rect x="130" y="360" width="90" height="30" rx="6" fill="#FFF3E0"/>
+  <text x="135" y="375" font-family="Arial" font-size="10" fill="#F57C00">السكر</text>
+  <text x="135" y="385" font-family="Arial" font-size="8" fill="#666">95 mg/dl</text>
+  
+  <rect x="30" y="400" width="90" height="30" rx="6" fill="#E8F5E8"/>
+  <text x="35" y="415" font-family="Arial" font-size="10" fill="#388E3C">الوزن</text>
+  <text x="35" y="425" font-family="Arial" font-size="8" fill="#666">75 كغ</text>
+  
+  <rect x="130" y="400" width="90" height="30" rx="6" fill="#FCE4EC"/>
+  <text x="135" y="415" font-family="Arial" font-size="10" fill="#C2185B">النبض</text>
+  <text x="135" y="425" font-family="Arial" font-size="8" fill="#666">72 نبضة</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg width="200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Home Screen -->
+  <rect width="200" height="400" fill="#E8F5E8"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="200" height="60" fill="#2E7D32"/>
+  <text x="100" y="25" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="white">الرئيسية</text>
+  <text x="100" y="45" text-anchor="middle" font-family="Arial" font-size="10" fill="white">مرحباً، أحمد</text>
+  
+  <!-- Quick Actions -->
+  <rect x="10" y="80" width="180" height="60" rx="8" fill="white"/>
+  <text x="20" y="100" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">الإجراءات السريعة</text>
+  
+  <rect x="20" y="110" width="35" height="25" rx="6" fill="#4CAF50"/>
+  <text x="37" y="125" text-anchor="middle" font-family="Arial" font-size="8" fill="white">موعد</text>
+  
+  <rect x="65" y="110" width="35" height="25" rx="6" fill="#FF9800"/>
+  <text x="82" y="125" text-anchor="middle" font-family="Arial" font-size="8" fill="white">قياس</text>
+  
+  <rect x="110" y="110" width="35" height="25" rx="6" fill="#9C27B0"/>
+  <text x="127" y="125" text-anchor="middle" font-family="Arial" font-size="8" fill="white">دواء</text>
+  
+  <rect x="155" y="110" width="25" height="25" rx="6" fill="#2196F3"/>
+  <text x="167" y="125" text-anchor="middle" font-family="Arial" font-size="10" fill="white">+</text>
+  
+  <!-- Appointments -->
+  <rect x="10" y="160" width="180" height="80" rx="8" fill="white"/>
+  <text x="20" y="180" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">المواعيد القادمة</text>
+  
+  <circle cx="30" cy="205" r="12" fill="#4CAF50" opacity="0.2"/>
+  <text x="30" y="210" text-anchor="middle" font-family="Arial" font-size="10" fill="#4CAF50">د</text>
+  <text x="50" y="202" font-family="Arial" font-size="10" font-weight="bold" fill="#333">د. محمد أحمد</text>
+  <text x="50" y="215" font-family="Arial" font-size="8" fill="#666">طب القلب - غداً 10:00</text>
+  
+  <!-- Health Stats -->
+  <rect x="10" y="260" width="180" height="120" rx="8" fill="white"/>
+  <text x="20" y="280" font-family="Arial" font-size="12" font-weight="bold" fill="#2E7D32">إحصائياتك</text>
+  
+  <rect x="20" y="290" width="75" height="25" rx="4" fill="#E3F2FD"/>
+  <text x="25" y="302" font-family="Arial" font-size="8" fill="#1976D2">ضغط الدم</text>
+  <text x="25" y="312" font-family="Arial" font-size="7" fill="#666">120/80</text>
+  
+  <rect x="105" y="290" width="75" height="25" rx="4" fill="#FFF3E0"/>
+  <text x="110" y="302" font-family="Arial" font-size="8" fill="#F57C00">السكر</text>
+  <text x="110" y="312" font-family="Arial" font-size="7" fill="#666">95 mg/dl</text>
+  
+  <rect x="20" y="325" width="75" height="25" rx="4" fill="#E8F5E8"/>
+  <text x="25" y="337" font-family="Arial" font-size="8" fill="#388E3C">الوزن</text>
+  <text x="25" y="347" font-family="Arial" font-size="7" fill="#666">75 كغ</text>
+  
+  <rect x="105" y="325" width="75" height="25" rx="4" fill="#FCE4EC"/>
+  <text x="110" y="337" font-family="Arial" font-size="8" fill="#C2185B">النبض</text>
+  <text x="110" y="347" font-family="Arial" font-size="7" fill="#666">72 نبضة</text>
+</svg>

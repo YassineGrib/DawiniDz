@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دويني دي زاد - تطبيق الصحة الشخصية</title>
+    <meta name="description" content="تطبيق دويني دي زاد - إدارة صحتك الشخصية بسهولة. حجز المواعيد، تتبع القياسات، إدارة الأدوية والمزيد.">
+    <meta name="keywords" content="صحة، طب، مواعيد، أطباء، الجزائر، تطبيق صحي">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="دويني دي زاد - تطبيق الصحة الشخصية">
+    <meta property="og:description" content="إدارة صحتك الشخصية بسهولة مع تطبيق دويني دي زاد">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dawinidz.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2E7D32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="دويني دي زاد">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="دويني دي زاد" class="logo-img">
+                <span class="logo-text">دويني دي زاد</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">الرئيسية</a>
+                <a href="#features" class="nav-link">المميزات</a>
+                <a href="#download" class="nav-link">تحميل</a>
+                <a href="#contact" class="nav-link">اتصل بنا</a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="hero-title">
+                    <span class="title-main">دويني دي زاد</span>
+                    <span class="title-sub">صحتك في جيبك</span>
+                </h1>
+                
+                <p class="hero-description">
+                    تطبيق شامل لإدارة صحتك الشخصية. احجز مواعيدك مع الأطباء، تتبع قياساتك الطبية، 
+                    وأدر أدويتك بسهولة - كل ذلك في مكان واحد.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        تحميل التطبيق
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        شاهد المميزات
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">مستخدم نشط</span>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">طبيب مسجل</span>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">موعد محجوز</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <div class="hero-main-image">
+                    <img src="assets/images/hero.png" max-width="10%" alt="دويني دي زاد - تطبيق الصحة الشخصية" class="hero-img">
+                </div>
+                
+                <!-- Floating Elements -->
+                <div class="floating-element element-1" data-aos="zoom-in" data-aos-delay="800">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="floating-element element-2" data-aos="zoom-in" data-aos-delay="1000">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="floating-element element-3" data-aos="zoom-in" data-aos-delay="1200">
+                    <i class="fas fa-pills"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" data-aos="bounce" data-aos-delay="2000">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">مميزات التطبيق</h2>
+                <p class="section-subtitle">
+                    اكتشف كيف يمكن لتطبيق دويني دي زاد أن يساعدك في إدارة صحتك بشكل أفضل
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="feature-title">حجز المواعيد</h3>
+                    <p class="feature-description">
+                        احجز مواعيدك مع أفضل الأطباء في الجزائر بسهولة وسرعة
+                    </p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">تتبع القياسات</h3>
+                    <p class="feature-description">
+                        راقب ضغط الدم، السكر، الوزن وغيرها من القياسات الحيوية
+                    </p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="feature-title">إدارة الأدوية</h3>
+                    <p class="feature-description">
+                        تذكيرات ذكية لمواعيد تناول الأدوية وإدارة الوصفات الطبية
+                    </p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3 class="feature-title">التقارير الطبية</h3>
+                    <p class="feature-description">
+                        احفظ وأدر تقاريرك الطبية وتحاليلك في مكان آمن
+                    </p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">المساعد الذكي</h3>
+                    <p class="feature-description">
+                        احصل على استشارات صحية فورية من المساعد الذكي
+                    </p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">الأمان والخصوصية</h3>
+                    <p class="feature-description">
+                        بياناتك محمية بأعلى معايير الأمان والخصوصية
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content" data-aos="fade-up">
+                <h2 class="section-title">حمل التطبيق الآن</h2>
+                <p class="section-subtitle">
+                    متوفر مجاناً على جميع المنصات
+                </p>
+                
+                <div class="download-buttons">
+                    <a href="#" class="download-btn android-btn" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="btn-icon">
+                            <i class="fab fa-google-play"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-subtitle">متوفر على</span>
+                            <span class="btn-title">Google Play</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="download-btn ios-btn" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="btn-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-subtitle">تحميل من</span>
+                            <span class="btn-title">App Store</span>
+                        </div>
+                    </a>
+                    
+                    <a href="app-debug.apk" class="download-btn direct-btn" data-aos="zoom-in" data-aos-delay="600" download>
+                        <div class="btn-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="btn-text">
+                            <span class="btn-subtitle">تحميل مباشر</span>
+                            <span class="btn-title">APK File</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- <div class="qr-code" data-aos="fade-up" data-aos-delay="800">
+                    <img src="assets/images/qr-code.svg" alt="QR Code للتحميل">
+                    <p>امسح الكود للتحميل السريع</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">
+                    نحن هنا لمساعدتك. تواصل معنا لأي استفسار أو اقتراح
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>support@dawinidz.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>الهاتف</h4>
+                            <p>+213 555 123 456</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>العنوان</h4>
+                            <p>الجزائر العاصمة، الجزائر</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="رسالتك" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="دويني دي زاد">
+                        <span>دويني دي زاد</span>
+                    </div>
+                    <p class="footer-description">
+                        تطبيق شامل لإدارة الصحة الشخصية في الجزائر
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#download">تحميل</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">الدعم</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">تحميل التطبيق</h4>
+                    <div class="footer-download">
+                        <a href="#" class="footer-download-btn">
+                            <i class="fab fa-google-play"></i>
+                            Google Play
+                        </a>
+                        <a href="#" class="footer-download-btn">
+                            <i class="fab fa-apple"></i>
+                            App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 دويني دي زاد. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

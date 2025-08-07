@@ -1,0 +1,134 @@
+{
+  "name": "دويني دي زي - تطبيق الصحة الشخصية",
+  "short_name": "دويني دي زي",
+  "description": "تطبيق شامل لإدارة الصحة الشخصية في الجزائر. احجز مواعيدك، تتبع قياساتك، وأدر أدويتك بسهولة.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E8F5E8",
+  "theme_color": "#2E7D32",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["health", "medical", "lifestyle"],
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjcyIiByeD0iMTYiIGZpbGw9IiMyRTdEMzIiLz4KPHBhdGggZD0iTTM2IDIwVjUyTTIwIDM2SDUyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "sizes": "72x72",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMjAiIGZpbGw9IiMyRTdEMzIiLz4KPHBhdGggZD0iTTQ4IDI0VjcyTTI0IDQ4SDcyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiByeD0iMjgiIGZpbGw9IiMyRTdEMzIiLz4KPHBhdGggZD0iTTY0IDMyVjk2TTMyIDY0SDk2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgdmlld0JveD0iMCAwIDE0NCAxNDQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNDQiIGhlaWdodD0iMTQ0IiByeD0iMzIiIGZpbGw9IiMyRTdEMzIiLz4KPHBhdGggZD0iTTcyIDM2VjEwOE0zNiA3MkgxMDgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iNDQiIGZpbGw9IiMyRTdEMzIiLz4KPHBhdGggZD0iTTk2IDQ4VjE0NE00OCA5NkgxNDQiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSIjMkU3RDMyIi8+CjxwYXRoIGQ9Ik0yNTYgMTI4VjM4NE0xMjggMjU2SDM4NCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIzMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/screenshot-1.svg",
+      "sizes": "200x400",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "الشاشة الرئيسية للتطبيق"
+    },
+    {
+      "src": "assets/images/screenshot-2.svg",
+      "sizes": "200x400",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "شاشة إدارة المواعيد"
+    },
+    {
+      "src": "assets/images/screenshot-3.svg",
+      "sizes": "200x400",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "شاشة تتبع القياسات الطبية"
+    },
+    {
+      "src": "assets/images/screenshot-4.svg",
+      "sizes": "200x400",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "شاشة الملف الشخصي"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "حجز موعد",
+      "short_name": "موعد",
+      "description": "حجز موعد جديد مع طبيب",
+      "url": "/#download",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMjAiIGZpbGw9IiM0Q0FGNTAIIC8+CjxwYXRoIGQ9Ik0yNCAzMkg3MlY3Mkg3MlYzMkgyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zNiA0OEg2MFY1Mkg2MFY0OEgzNloiIGZpbGw9IiM0Q0FGNTAIIC8+Cjwvc3ZnPgo=",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "قياس جديد",
+      "short_name": "قياس",
+      "description": "إضافة قياس طبي جديد",
+      "url": "/#download",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMjAiIGZpbGw9IiNGRjk4MDAiLz4KPHBhdGggZD0iTTQ4IDI0VjcyTTI0IDQ4SDcyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "تذكير دواء",
+      "short_name": "دواء",
+      "description": "إضافة تذكير دواء جديد",
+      "url": "/#download",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMjAiIGZpbGw9IiM5QzI3QjAiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iMjAiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjQ4IiBjeT0iNDgiIHI9IjEyIiBmaWxsPSIjOUMyN0IwIi8+Cjwvc3ZnPgo=",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.dawinidz.app",
+      "id": "com.dawinidz.app"
+    }
+  ],
+  "prefer_related_applications": true,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
